@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Kalkulator</title>
@@ -9,9 +9,60 @@
       @theme {
         --color-clifford: #da373d;
       }
+
+      @layer components {
+        .operator {
+          @apply bg-orange-400 hover:bg-white hover:text-orange-400;
+        }
+        #keys {
+          @apply grid grid-cols-4 gap-[10px] p-[25px];
+        }
+
+        #calculator {
+          @apply m-4 max-w-[500px] rounded-2xl bg-gray-900 font-sans;
+        }
+      }
+
+      @layer base {
+        button {
+          @apply h-[100px] w-[100px] cursor-pointer rounded-[50px] border-none bg-gray-800 text-5xl font-bold text-white hover:bg-white hover:text-gray-800;
+        }
+      }
     </style>
   </head>
-  <body>
-    <h1 class="text-3xl font-bold underline text-clifford">Hello world!</h1>
+  <body class="m-0 flex items-center justify-center">
+    <div id="calculator">
+      <div class="flex flex-col items-center bg-gray-800">
+        <label for="display" class="my-3 font-bold text-white"
+          >Enter your number</label
+        >
+        <input
+          id="display"
+          readonly
+          class="text-7xl; w-[100%] p-[20px] px-4 text-start text-xl text-white"
+        />
+      </div>
+
+      <div id="keys">
+        <button onclick="appendToDisplay('+')" class="operator">+</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('-')" class="operator">-</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('*')" class="operator">*</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('/')" class="operator">/</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay(',')">.</button>
+        <button onclick="calculate()">=</button>
+        <button class="operator" onclick onclick="clearDisplay()">c</button>
+      </div>
+    </div>
+    <script src="index.js"></script>
   </body>
 </html>
